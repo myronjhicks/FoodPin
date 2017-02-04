@@ -32,8 +32,6 @@ class RestaurantTableViewController: UITableViewController {
         Restaurant(name: "Donostia", type: "Spanish", location: "10 Seymour Place London W1H 7ND United Kingdom", image: "donostia.jpg", phone: "456-789-1234", isVisited: false),
         Restaurant(name: "Royal Oak", type: "British", location: "2 Regency Street London Sw1P 4BZ United Kingdom", image: "royaloak.jpg", phone: "456-789-1234", isVisited: false),
         Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", image: "caskpubkitchen.jpg", phone: "456-789-1234", isVisited: false)
-        
-        
     ]
     
     override func viewDidLoad() {
