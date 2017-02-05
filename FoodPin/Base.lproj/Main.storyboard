@@ -236,18 +236,27 @@
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Absolutely love it!"/>
+                                                <connections>
+                                                    <segue destination="fdq-c6-K6m" kind="unwind" identifier="great" unwindAction="ratingButtonTappedWithSegue:" id="jTq-hF-MQK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GL1-ub-RpN">
                                                 <rect key="frame" x="0.0" y="42.5" width="253" height="37.5"/>
                                                 <color key="backgroundColor" red="0.84705882352941175" green="0.29019607843137252" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Good"/>
+                                                <connections>
+                                                    <segue destination="fdq-c6-K6m" kind="unwind" identifier="good" unwindAction="ratingButtonTappedWithSegue:" id="1Pf-em-jec"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="69W-c5-l0k">
                                                 <rect key="frame" x="0.0" y="85" width="253" height="37.5"/>
                                                 <color key="backgroundColor" red="0.84705882352941175" green="0.29019607843137252" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="I don't like it"/>
+                                                <connections>
+                                                    <segue destination="fdq-c6-K6m" kind="unwind" identifier="dislike" unwindAction="ratingButtonTappedWithSegue:" id="e3a-11-oE1"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -295,6 +304,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="g6I-Bk-PWB" id="Wiv-oD-p7a"/>
                         <outlet property="containerView" destination="hJo-Z1-tgg" id="rIY-uh-ZMc"/>
+                        <outlet property="reviewImageView" destination="UCa-b2-5j2" id="qiR-6A-eAQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0j0-of-QMH" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,20 +12,21 @@ class ReviewViewController: UIViewController {
 
     @IBOutlet var backgroundImageView : UIImageView!
     @IBOutlet var containerView : UIView!
+    @IBOutlet var reviewImageView: UIImageView!
+    
+    var restaurant : Restaurant!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        backgroundImageView.image = UIImage(named: restaurant.image)
+        reviewImageView.image = UIImage(named: restaurant.image)
+        
         // Do any additional setup after loading the view.
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         backgroundImageView.addSubview(blurEffectView)
-        
-        //containerView.transform = CGAffineTransform.init(scaleX: 0, y: 0)
-        
-        //slide down animation
-        //containerView.transform = CGAffineTransform.init(translationX: 0, y: -1000)
         
         //combining two transforms
         let scaleTransform = CGAffineTransform.init(scaleX: 0, y:0)
