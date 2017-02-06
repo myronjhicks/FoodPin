@@ -96,38 +96,6 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
     
-    //When a row is selected handle different events/menus
-    /*
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Create an option menu as an action sheet
-        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
-        
-        //Add actions to the menu
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        optionMenu.addAction(cancelAction)
-        
-        let callActionHandler = { (action: UIAlertAction!) -> Void in
-            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
-            alertMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alertMessage, animated: true, completion: nil)
-        }
-        let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
-        optionMenu.addAction(callAction)
-        
-        let checkInAction = UIAlertAction(title: "Check in", style: .default, handler:{
-            (action:UIAlertAction) -> Void in
-                let cell = tableView.cellForRow(at: indexPath)
-            cell?.accessoryType = .checkmark
-            self.restaurantIsVisited[indexPath.row] = true
-        })
-        optionMenu.addAction(checkInAction)
-        
-        present(optionMenu, animated: true, completion: nil)
-        
-        tableView.deselectRow(at: indexPath, animated: false)
-    }
-     */
-    
     //Used to delete a row in the table view. By default it makes swipe left to delete availble without any action
     //if delete is pressed
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -163,5 +131,9 @@ class RestaurantTableViewController: UITableViewController {
         })
         deleteAction.backgroundColor = UIColor(red: 202.0/255.0, green: 202.0/255.0, blue: 203.0/255.0, alpha: 1.0)
         return [deleteAction, shareAction]
+    }
+    
+    @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
+        
     }
 }
