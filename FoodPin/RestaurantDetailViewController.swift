@@ -16,7 +16,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
 
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
-    var restaurant: Restaurant!
+    var restaurant: RestaurantMO!
     
     @IBOutlet var mapView : MKMapView!
     
@@ -30,7 +30,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         //change the color of the seperators
         tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)
         
-        restaurantImageView.image = UIImage(named: restaurant.image)
+        restaurantImageView.image = UIImage(data: restaurant.image as! Data)
         
         //to enable self sizing cells
         tableView.estimatedRowHeight = 36.0
@@ -38,7 +38,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         
         //add annotation to map in footer
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(restaurant.location, completionHandler: {
+        geoCoder.geocodeAddressString(restaurant.location!, completionHandler: {
             placemarks, error in
             if error != nil {
                 print(error!)
@@ -117,19 +117,32 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         switch indexPath.row {
         case 0:
             cell.fieldLabel.text = "Name"
-            cell.valueLabel.text = restaurant.name
+            cell.valueLabel.text = restaurant.name!
         case 1:
             cell.fieldLabel.text = "Type"
-            cell.valueLabel.text = restaurant.type
+            cell.valueLabel.text = restaurant.type!
         case 2:
             cell.fieldLabel.text = "Location"
-            cell.valueLabel.text = restaurant.location
+            cell.valueLabel.text = restaurant.location!
         case 3:
             cell.fieldLabel.text = "Phone"
-            cell.valueLabel.text = restaurant.phone
+            if let phone = restaurant.phone {
+                cell.valueLabel.text = phone
+            }else{
+                cell.valueLabel.text = "N/A"
+            }
         case 4:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (restaurant.isVisited ? "Yes, I've been here before. \(restaurant.rating)" : "No")
+            if restaurant.isVisited {
+                if let rating = restaurant.rating {
+                    cell.valueLabel.text = "Yes, I've been here before. \(rating)"
+                }else{
+                   cell.valueLabel.text = "Yes, I've been here before."
+                }
+            }else{
+                cell.valueLabel.text = "No"
+            }
+            
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
@@ -148,15 +161,15 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             restaurant.isVisited = true
             
             switch rating {
-            case "great" :
-                restaurant.rating = "Absolutely love it! Must try."
-            case "good" :
-                restaurant.rating = "Pretty good."
-            case "dislike" :
-                restaurant.rating = "I don't like it."
-            default:
-                break
+                case "great"   : restaurant.rating = "Absolutely love it! Must try."
+                case "good"    : restaurant.rating = "Pretty good."
+                case "dislike" : restaurant.rating = "I don't like it."
+                default: break
             }
+        }
+        
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            appDelegate.saveContext()
         }
         
         tableView.reloadData()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AddRestaurantController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -16,6 +17,9 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
     @IBOutlet var locationTextField : UITextField!
     @IBOutlet var yesButton : UIButton!
     @IBOutlet var noButton : UIButton!
+    @IBOutlet var phoneTextField: UITextField!
+    
+    var restaurant : RestaurantMO!
     
     var isVisited = true
     
@@ -72,8 +76,32 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
             let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
+        }else{
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
+                restaurant.name = nameTextField.text
+                restaurant.type = typeTextField.text
+                restaurant.location = locationTextField.text
+                if let phone = phoneTextField.text {
+                    if !phone.isEmpty {
+                        restaurant.phone = phone
+                    }
+                }
+                restaurant.isVisited = isVisited
+                
+                if let restaurantImage = photoImageView.image {
+                    if let imageData = UIImagePNGRepresentation(restaurantImage) {
+                        restaurant.image = NSData(data: imageData)
+                    }
+                }
+                print("Saving data to context ...")
+                appDelegate.saveContext()
+            }
+            dismiss(animated: true, completion: nil)
         }
-        //dismiss(animated: true, completion: nil)
+        
+        
+        
     }
     
     @IBAction func toggleBeenHere(_ sender: UIButton) {

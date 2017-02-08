@@ -346,8 +346,44 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Gxp-Fr-dDx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="zQX-xM-7vL">
                                         <rect key="frame" x="0.0" y="466" width="375" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zQX-xM-7vL" id="jvK-Np-SAR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2nV-dh-7RJ">
+                                                    <rect key="frame" x="8" y="8" width="359" height="55.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kW-We-wzh">
+                                                            <rect key="frame" x="0.0" y="0.0" width="59" height="25.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HcO-Mo-0HO">
+                                                            <rect key="frame" x="0.0" y="30.5" width="339" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="339" id="L29-DM-uHk"/>
+                                                            </constraints>
+                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2nV-dh-7RJ" secondAttribute="bottom" id="0Wt-6Q-FJq"/>
+                                                <constraint firstItem="2nV-dh-7RJ" firstAttribute="top" secondItem="jvK-Np-SAR" secondAttribute="topMargin" id="VgM-DF-LHn"/>
+                                                <constraint firstItem="2nV-dh-7RJ" firstAttribute="leading" secondItem="jvK-Np-SAR" secondAttribute="leadingMargin" id="aCM-3Q-Oy0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2nV-dh-7RJ" secondAttribute="trailing" id="mKP-WX-j3n"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="Gxp-Fr-dDx">
+                                        <rect key="frame" x="0.0" y="538" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gxp-Fr-dDx" id="Orj-8s-q7n">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
@@ -431,6 +467,7 @@
                         <outlet property="locationTextField" destination="H8V-B4-xuJ" id="Y9i-3j-DBO"/>
                         <outlet property="nameTextField" destination="wae-xb-ewN" id="VMR-AJ-d7y"/>
                         <outlet property="noButton" destination="GcA-78-dut" id="rnA-AN-boK"/>
+                        <outlet property="phoneTextField" destination="HcO-Mo-0HO" id="ndt-Xp-IWT"/>
                         <outlet property="photoImageView" destination="y5p-9a-bpM" id="IyM-h6-hYE"/>
                         <outlet property="typeTextField" destination="1e7-Uk-E9F" id="tTC-RT-xMW"/>
                         <outlet property="yesButton" destination="D5O-Qm-YtR" id="ehp-Zf-0ZU"/>

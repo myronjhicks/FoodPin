@@ -14,13 +14,13 @@ class ReviewViewController: UIViewController {
     @IBOutlet var containerView : UIView!
     @IBOutlet var reviewImageView: UIImageView!
     
-    var restaurant : Restaurant!
+    var restaurant : RestaurantMO!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backgroundImageView.image = UIImage(named: restaurant.image)
-        reviewImageView.image = UIImage(named: restaurant.image)
+        backgroundImageView.image = UIImage(data: restaurant.image as! Data)
+        reviewImageView.image = UIImage(data: restaurant.image as! Data)
         
         // Do any additional setup after loading the view.
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
