@@ -9,11 +9,16 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
     var restaurants : [RestaurantMO] = []
     
     var fetchResultController : NSFetchedResultsController<RestaurantMO>!
+    
+    var searchController : UISearchController!
+    
+    //used to store the search results
+    var searchResults : [RestaurantMO] = []
     
     
     override func viewDidLoad() {
@@ -23,6 +28,16 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         tableView.estimatedRowHeight = 80.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        //add search bar
+        searchController = UISearchController(searchResultsController: nil)
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search restaurants..."
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.barTintColor = UIColor(red: 218.0/255.0, green: 100.0/255.0, blue: 70.0/255.0, alpha: 1.0)
+        
         
         //fetch data from data source
         let fetchRequest : NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
@@ -42,6 +57,26 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             }catch {
                 print(error)
             }
+        }
+        
+    }
+    
+    //content filtering method
+    func filterContent(for searchText : String){
+        searchResults = restaurants.filter({
+            (restaurant) -> Bool in
+            if let name = restaurant.name, let location = restaurant.location {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText) || location.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+            return false
+        })
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
         }
     }
     
@@ -88,7 +123,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         if segue.identifier == "showRestaurantDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! RestaurantDetailViewController
-                destinationController.restaurant = restaurants[indexPath.row]
+                destinationController.restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
             }
         }
     }
@@ -105,7 +140,11 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
 
     //Used to load how many rows in the table
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count
+        if searchController.isActive {
+            return searchResults.count
+        }else{
+            return restaurants.count
+        }
     }
 
     //For each row populate it with data (resturant* arrays)
@@ -115,12 +154,13 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         //Configure the cell
         let row = indexPath.row
-        cell.nameLabel.text = restaurants[row].name
-        cell.thumbnailImageView.image = UIImage(data: restaurants[row].image as! Data)
-        cell.locationLabel.text = restaurants[row].location
-        cell.typeLabel.text = restaurants[row].type
+        let restaurant = (searchController.isActive) ? searchResults[row] : restaurants[row]
+        cell.nameLabel.text = restaurant.name
+        cell.thumbnailImageView.image = UIImage(data: restaurant.image as! Data)
+        cell.locationLabel.text = restaurant.location
+        cell.typeLabel.text = restaurant.type
         
-        if restaurants[indexPath.row].isVisited {
+        if restaurant.isVisited {
             cell.accessoryType = .checkmark
         }else{
             cell.accessoryType = .none
@@ -139,6 +179,14 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         //trigger the view to reload its data
         tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if searchController.isActive {
+            return false
+        }else{
+            return true
+        }
     }
     
     //Swipe for more implementation (similar to Mail app (IOS)
