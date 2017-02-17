@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -637,6 +638,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBW-Kl-SAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="148" y="136.28185907046478"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="Zt5-c6-fTO">
+            <objects>
+                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="SYv-0v-gp1" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X9K-6R-7xQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1303" y="-1372"/>
+        </scene>
+        <!--Walkthrough Content View Controller-->
+        <scene sceneID="7Vg-Fn-Mdo">
+            <objects>
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="uU9-Fo-B2b" customClass="WalkthroughContentViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o8y-rQ-0VT"/>
+                        <viewControllerLayoutGuide type="bottom" id="wjr-eL-g3H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="n0K-fx-R1e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personalize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqv-k0-2Xn">
+                                <rect key="frame" x="134" y="28" width="106" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mUe-Pd-cOV">
+                                <rect key="frame" x="38" y="67" width="299" height="231"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mUe-Pd-cOV" secondAttribute="height" multiplier="75:58" id="KC6-LF-9jM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin your favorite restaurants and create your own food guide." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aB-qC-9kv">
+                                <rect key="frame" x="46" y="306" width="282" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="282" id="6zz-lO-SnK"/>
+                                    <constraint firstAttribute="height" constant="64" id="IDb-6d-Vow"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-77-IRh">
+                                <rect key="frame" x="168" y="622" width="39" height="37"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lwZ-Ke-Uop">
+                                <rect key="frame" x="320" y="630" width="39" height="30"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonTappedWithSender:" destination="uU9-Fo-B2b" eventType="touchUpInside" id="eqm-SE-mIS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.75294117647058822" green="0.22352941176470587" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="mUe-Pd-cOV" firstAttribute="leading" secondItem="n0K-fx-R1e" secondAttribute="leadingMargin" constant="22" id="0aI-dy-ZXG"/>
+                            <constraint firstItem="Kqv-k0-2Xn" firstAttribute="top" secondItem="o8y-rQ-0VT" secondAttribute="bottom" constant="8" id="3e7-gR-DDw"/>
+                            <constraint firstItem="Kqv-k0-2Xn" firstAttribute="centerX" secondItem="n0K-fx-R1e" secondAttribute="centerX" id="5AR-5h-nJd"/>
+                            <constraint firstItem="5aB-qC-9kv" firstAttribute="top" secondItem="mUe-Pd-cOV" secondAttribute="bottom" constant="8" id="A4U-NY-4Xm"/>
+                            <constraint firstItem="v1i-77-IRh" firstAttribute="top" secondItem="o8y-rQ-0VT" secondAttribute="bottom" constant="602" id="DC8-CG-Z1a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lwZ-Ke-Uop" secondAttribute="trailing" id="DUq-1Y-rIj"/>
+                            <constraint firstItem="v1i-77-IRh" firstAttribute="centerX" secondItem="n0K-fx-R1e" secondAttribute="centerX" id="NWi-sz-3mO"/>
+                            <constraint firstItem="5aB-qC-9kv" firstAttribute="centerX" secondItem="n0K-fx-R1e" secondAttribute="centerX" id="bOj-TX-jyb"/>
+                            <constraint firstItem="wjr-eL-g3H" firstAttribute="top" secondItem="lwZ-Ke-Uop" secondAttribute="bottom" constant="7" id="kFJ-sX-T0a"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mUe-Pd-cOV" secondAttribute="trailing" constant="22" id="sU4-jt-vj0"/>
+                            <constraint firstItem="mUe-Pd-cOV" firstAttribute="top" secondItem="Kqv-k0-2Xn" secondAttribute="bottom" constant="15" id="zq4-ee-jTj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentImageView" destination="mUe-Pd-cOV" id="C2A-6k-h90"/>
+                        <outlet property="contentLabel" destination="5aB-qC-9kv" id="NAN-S6-8Ve"/>
+                        <outlet property="forwardButton" destination="lwZ-Ke-Uop" id="Qnq-kd-lw8"/>
+                        <outlet property="headingLabel" destination="Kqv-k0-2Xn" id="74k-5e-Dhc"/>
+                        <outlet property="pageControl" destination="v1i-77-IRh" id="Uit-rj-0Kz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RPo-ZT-nJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-530.39999999999998" y="-1372.263868065967"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qlk-B5-T0c">
