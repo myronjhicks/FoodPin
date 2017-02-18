@@ -18,6 +18,8 @@
 		C8B5D1E81E56797100CAE9F9 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B5D1E71E56797100CAE9F9 /* WalkthroughPageViewController.swift */; };
 		C8B5D1EB1E569C5400CAE9F9 /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B5D1E91E569C5400CAE9F9 /* about.storyboard */; };
 		C8B5D1ED1E569C8D00CAE9F9 /* discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8B5D1EC1E569C8D00CAE9F9 /* discover.storyboard */; };
+		C8B5D1EF1E58E9BD00CAE9F9 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B5D1EE1E58E9BD00CAE9F9 /* AboutTableViewController.swift */; };
+		C8B5D1F11E58EEE300CAE9F9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B5D1F01E58EEE300CAE9F9 /* WebViewController.swift */; };
 		C8C3CD071E44BDF20080A96F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C3CD061E44BDF20080A96F /* Restaurant.swift */; };
 		C8C3CD091E44E1920080A96F /* RestaurantDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C3CD081E44E1920080A96F /* RestaurantDetailTableViewCell.swift */; };
 		C8F861AF1E46148C00485926 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F861AE1E46148C00485926 /* ReviewViewController.swift */; };
@@ -41,6 +43,8 @@
 		C8B5D1E71E56797100CAE9F9 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		C8B5D1EA1E569C5400CAE9F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/about.storyboard; sourceTree = "<group>"; };
 		C8B5D1EC1E569C8D00CAE9F9 /* discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = discover.storyboard; sourceTree = "<group>"; };
+		C8B5D1EE1E58E9BD00CAE9F9 /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		C8B5D1F01E58EEE300CAE9F9 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C8C3CD061E44BDF20080A96F /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		C8C3CD081E44E1920080A96F /* RestaurantDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C8F861AE1E46148C00485926 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				C8F861D81E49477F00485926 /* FoodPin.xcdatamodeld */,
 				C8B5D1E31E5677A600CAE9F9 /* WalkthroughContentViewController.swift */,
 				C8B5D1E71E56797100CAE9F9 /* WalkthroughPageViewController.swift */,
+				C8B5D1EE1E58E9BD00CAE9F9 /* AboutTableViewController.swift */,
+				C8B5D1F01E58EEE300CAE9F9 /* WebViewController.swift */,
 			);
 			path = FoodPin;
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8F861B61E48FBA900485926 /* AddRestaurantController.swift in Sources */,
+				C8B5D1EF1E58E9BD00CAE9F9 /* AboutTableViewController.swift in Sources */,
 				C8C3CD071E44BDF20080A96F /* Restaurant.swift in Sources */,
 				C8B2AC8E1E425BEC001B45CB /* RestaurantTableViewController.swift in Sources */,
 				C8F861AF1E46148C00485926 /* ReviewViewController.swift in Sources */,
@@ -201,6 +208,7 @@
 				C8F861DA1E49477F00485926 /* FoodPin.xcdatamodeld in Sources */,
 				C8C3CD091E44E1920080A96F /* RestaurantDetailTableViewCell.swift in Sources */,
 				C8B2AC921E42CC6E001B45CB /* RestaurantDetailViewController.swift in Sources */,
+				C8B5D1F11E58EEE300CAE9F9 /* WebViewController.swift in Sources */,
 				C84336631E424C0C002A642F /* AppDelegate.swift in Sources */,
 				C8F861B41E47A1EC00485926 /* MapViewController.swift in Sources */,
 			);
