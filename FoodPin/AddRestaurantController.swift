@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 class AddRestaurantController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -96,6 +97,7 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
                 }
                 print("Saving data to context ...")
                 appDelegate.saveContext()
+                saveRecordToCloud(restaurant: restaurant)
             }
             dismiss(animated: true, completion: nil)
         }
@@ -124,5 +126,45 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
             // Change the backgroundColor property of noButton to red
             noButton.backgroundColor = UIColor(red: 218.0/255.0, green: 100.0/255.0, blue: 70.0/255.0, alpha: 1.0)
         }
+    }
+    
+    func saveRecordToCloud(restaurant: RestaurantMO!) -> Void {
+        //prepare the record to save
+        let record = CKRecord(recordType: "Restaurant")
+        record.setValue(restaurant.name, forKey: "name")
+        record.setValue(restaurant.type, forKey: "type")
+        record.setValue(restaurant.location, forKey: "location")
+        record.setValue(restaurant.phone, forKey: "phone")
+        
+        let imageData = restaurant.image as! Data
+        
+        //resize the image
+        let originalImage = UIImage(data: imageData)!
+        let scalingFactor = (originalImage.size.width > 1024) ? 1024 / originalImage.size.width : 1.0
+        let scaledImage = UIImage(data: imageData, scale: scalingFactor)!
+        
+        //write the image tp local file for temp use
+        let imageFilePath = NSTemporaryDirectory() + restaurant.name!
+        let imageFileURL = URL(fileURLWithPath: imageFilePath)
+        try? UIImageJPEGRepresentation(scaledImage, 0.8)?.write(to: imageFileURL)
+        
+        //create image asset for upload
+        let imageAsset = CKAsset(fileURL: imageFileURL)
+        record.setValue(imageAsset, forKey: "image")
+        
+        //get the public iCloud Database
+        let publicDatabase = CKContainer.init(identifier: "iCloud.hicks.FoodPinCloud").publicCloudDatabase
+        
+        //save the record to iCLoud
+        publicDatabase.save(record, completionHandler: {
+            (record, error) -> Void in
+            //remove temp file
+            if let error = error {
+                print("Error saving record \(error.localizedDescription)")
+                return
+            }
+            print("Saved successful")
+            try? FileManager.default.removeItem(at: imageFileURL)
+        })
     }
 }

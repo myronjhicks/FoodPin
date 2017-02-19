@@ -6,25 +6,72 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Discover-->
         <scene sceneID="JGq-RD-SP1">
             <objects>
-                <tableViewController id="9RL-ty-jDt" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="fQE-j3-7ml">
+                <tableViewController id="9RL-ty-jDt" customClass="DiscoverTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" id="fQE-j3-7ml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Nx8-YZ-a9F">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="250" id="Nx8-YZ-a9F" customClass="RestaurantTableViewCell" customModule="FoodPin" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nx8-YZ-a9F" id="FBJ-og-r8n">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="249"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bWI-Gb-RwN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="165" id="pEr-lc-rAR"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HPG-jg-fvs">
+                                            <rect key="frame" x="18" y="173" width="339.5" height="64.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoP-bw-Lcw">
+                                                    <rect key="frame" x="0.0" y="0.0" width="339.5" height="28.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgx-zT-jDa">
+                                                    <rect key="frame" x="0.0" y="28.5" width="339.5" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUf-Hh-io5">
+                                                    <rect key="frame" x="0.0" y="45" width="339.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="bWI-Gb-RwN" secondAttribute="trailing" id="1MU-1i-att"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HPG-jg-fvs" secondAttribute="trailing" constant="9.5" id="Eek-Wt-ceZ"/>
+                                        <constraint firstItem="HPG-jg-fvs" firstAttribute="top" secondItem="bWI-Gb-RwN" secondAttribute="bottom" constant="8" id="WrK-UL-FfI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HPG-jg-fvs" secondAttribute="bottom" constant="4" id="Wtd-Nd-sv3"/>
+                                        <constraint firstItem="HPG-jg-fvs" firstAttribute="leading" secondItem="FBJ-og-r8n" secondAttribute="leadingMargin" constant="10" id="fec-XO-dt9"/>
+                                        <constraint firstItem="bWI-Gb-RwN" firstAttribute="leading" secondItem="FBJ-og-r8n" secondAttribute="leading" id="icj-CA-hyr"/>
+                                        <constraint firstItem="bWI-Gb-RwN" firstAttribute="top" secondItem="FBJ-og-r8n" secondAttribute="top" id="rBC-PJ-JYG"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="locationLabel" destination="PUf-Hh-io5" id="0ez-yR-AEb"/>
+                                    <outlet property="nameLabel" destination="uoP-bw-Lcw" id="xeZ-AV-xbM"/>
+                                    <outlet property="thumbnailImageView" destination="bWI-Gb-RwN" id="bJJ-du-p7o"/>
+                                    <outlet property="typeLabel" destination="Tgx-zT-jDa" id="Xei-z5-dYr"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -33,10 +80,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Discover" id="2kC-lJ-Fc1"/>
+                    <connections>
+                        <outlet property="spinner" destination="GNJ-x3-oha" id="OwX-M2-5Aq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8L-fb-nCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="GNJ-x3-oha">
+                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </objects>
-            <point key="canvasLocation" x="1087" y="958"/>
+            <point key="canvasLocation" x="1085.5999999999999" y="957.57121439280365"/>
         </scene>
         <!--Discover-->
         <scene sceneID="IFE-RV-1Of">
