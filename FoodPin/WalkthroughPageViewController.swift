@@ -69,20 +69,5 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
             setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
         }
     }
-    
-    /*
-     * Default page control
-     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return pageHeadings.count
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        if let pageContentViewController = storyboard?.instantiateViewController(withIdentifier: "WalkthroughContentViewController") as? WalkthroughContentViewController {
-            return pageContentViewController.index
-        }
-        
-        return 0
-    }*/
 
 }
